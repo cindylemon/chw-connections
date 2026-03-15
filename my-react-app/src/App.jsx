@@ -88,7 +88,7 @@ function App() {
         ))}
       </div>
 
-      <p className="text">
+      <p className="mistakes">
         Mistakes remaining: {mistakes}
       </p>
       <div className='button-holder'>
