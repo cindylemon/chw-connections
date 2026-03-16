@@ -30,7 +30,6 @@ function App() {
   }, [solved])
 
   function handleClick(word) {
-    console.log('clicked ', word)
     if (selected.includes(word)) {
       setSelected(selected.filter(w => w !== word))
     } else if (selected.length < 4) {
@@ -50,13 +49,10 @@ function App() {
   function handleSubmit() {
     const match = checkGuess()
     if (match) {
-      console.log("correct")
       setSolved(prev => [...prev, match])
       setSelected([])
     } else {
-      console.log("wrong")
       setMistakes(prev => prev - 1)
-      console.log(mistakes)
       if(checkOneAway()) {
         alert('One away!')
       }
