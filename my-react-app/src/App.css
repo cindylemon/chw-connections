@@ -52,3 +52,7 @@ button {
 .text {
   color: black;
 }
+
+.completed {
+  padding: 1rem;
+}

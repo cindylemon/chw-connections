@@ -57,6 +57,9 @@ function App() {
       console.log("wrong")
       setMistakes(prev => prev - 1)
       console.log(mistakes)
+      if(checkOneAway()) {
+        alert('One away!')
+      }
       setSelected([])
       if (mistakes - 1 < 1) {
         alert("Sorry, you lose!")
@@ -71,11 +74,21 @@ function App() {
     setSelected([])
   }
 
+  // this was claude generated completely
+  function checkOneAway() {
+  return tiles.categories
+    .filter(category => !solved.some(s => s.name === category.name))
+    .some(category => {
+      const matches = selected.filter(word => category.words.includes(word))
+      return matches.length === 3
+    })
+}
+
   return (
     <>
       <p className="text">Creat four groups of four!</p>
       {solved.map(category => (
-        <div key={category.name} style={{ background: category.color }}>
+        <div className = "completed" key={category.name} style={{ background: category.color }}>
           <p>{category.name}</p>
           <p>{category.words.join(', ')}</p>
         </div>
